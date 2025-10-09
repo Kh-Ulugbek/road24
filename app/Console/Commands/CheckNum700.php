@@ -29,6 +29,14 @@ class CheckNum700 extends Command
      */
     public function handle()
     {
+        sleep(2);
+        $result = CheckNumService::check('700');
+        if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            CheckNumService::sendNums($result['data']['data']);
+        }
+
+        sleep(15);
+
         $result = CheckNumService::check('700');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
             CheckNumService::sendNums($result['data']['data']);

@@ -33,5 +33,12 @@ class CheckNum777 extends Command
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
             CheckNumService::sendNums($result['data']['data']);
         }
+
+        sleep(15);
+
+        $result = CheckNumService::check('777');
+        if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            CheckNumService::sendNums($result['data']['data']);
+        }
     }
 }

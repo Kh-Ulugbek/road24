@@ -29,6 +29,14 @@ class CheckNum001 extends Command
      */
     public function handle()
     {
+        sleep(6);
+        $result = CheckNumService::check('001');
+        if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            CheckNumService::sendNums($result['data']['data']);
+        }
+
+        sleep(15);
+
         $result = CheckNumService::check('001');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
             CheckNumService::sendNums($result['data']['data']);
