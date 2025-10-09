@@ -3,17 +3,19 @@
 namespace App\Console\Commands;
 
 use App\Services\CheckNumService;
+use App\Services\TgBot;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
-class CheckFake extends Command
+class CheckNum700 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:check-fake';
+    protected $signature = 'app:check-num-700';
 
     /**
      * The console command description.
@@ -27,18 +29,9 @@ class CheckFake extends Command
      */
     public function handle()
     {
-        $result = CheckNumService::checkFake();
+        $result = CheckNumService::check('700');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
-            $token = '8135956703:AAF3LWwaobfLfb-W-5tylXq_9NkExOxxF7E';
-            $chatId = '291096722';
-            $url = "https://api.telegram.org/bot{$token}/sendMessage";
-
-            $resp = Http::asForm()->post($url, [
-                'chat_id' => $chatId,
-                'text' => 'Data found',
-                'parse_mode' => 'HTML',
-                'disable_web_page_preview' => true,
-            ]);
+            CheckNumService::sendNums($result['data']['data']);
         }
     }
 }
