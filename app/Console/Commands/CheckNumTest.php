@@ -33,12 +33,14 @@ class CheckNumTest extends Command
             $chatId = '291096722';
             $url = "https://api.telegram.org/bot{$token}/sendMessage";
 
-            $resp = Http::asForm()->post($url, [
-                'chat_id' => $chatId,
-                'text' => 'Data found2',
-                'parse_mode' => 'HTML',
-                'disable_web_page_preview' => true,
-            ]);
+            foreach ($result['data']['data'] as $value) {
+                $resp = Http::asForm()->post($url, [
+                    'chat_id' => $chatId,
+                    'text' => $value['drbNumber'] . ' ' . '🔴',
+                    'parse_mode' => 'HTML',
+                    'disable_web_page_preview' => true,
+                ]);
+            }
         }
     }
 }
