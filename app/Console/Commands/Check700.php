@@ -27,7 +27,7 @@ class Check700 extends Command
      */
     public function handle()
     {
-        $result = CheckNumService::checkTest();
+        $result = CheckNumService::checkTest700();
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
             $token = '5187500736:AAFKPS7wqTn-0lTsZVEZyZ81IMsQbodtPRk';
             $chatId = '291096722';

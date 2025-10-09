@@ -120,7 +120,7 @@ class CheckNumService
             // 'plateNumber' => '01%100%%'
             // yoki aniq encoded ko'rinishni yubormoqchi bo'lsangiz:
             // 'plateNumber' => rawurlencode('01%100%%') // natija 01%25100%25%25
-            'plateNumber' => '01%700%%',
+            'plateNumber' => '01%100%%',
             'ownerTypeId' => 2,
             'regionId' => 10,
             'isElectr' => 'false',
