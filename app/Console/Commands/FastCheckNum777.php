@@ -8,14 +8,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
-class TestCommand extends Command
+class FastCheckNum777 extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:test-command';
+    protected $signature = 'app:fast-check-num-777';
 
     /**
      * The console command description.
@@ -29,9 +29,16 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        $result = CheckNumService::check(100);
+        $result = CheckNumService::check('777');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
-            CheckNumService::sendNumsTest($result['data']['data']);
+            CheckNumService::sendNums($result['data']['data']);
+        }
+
+        sleep(15);
+
+        $result = CheckNumService::check('777');
+        if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            CheckNumService::sendNums($result['data']['data']);
         }
     }
 }

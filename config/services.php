@@ -37,6 +37,8 @@ return [
     'telegram' => [
         'bot_token' => env('TELEGRAM_BOT_TOKEN'),
         'channel' => env('TELEGRAM_CHANNEL'),
+        'bot_test_token' => env('TELEGRAM_BOT_TEST_TOKEN'),
+        'channel_test' => env('TELEGRAM_TEST_CHANNEL'),
     ],
 
 ];

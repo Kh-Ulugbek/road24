@@ -71,6 +71,18 @@ class CheckNumService
         }
     }
 
+    public static function sendNumsTest($nums)
+    {
+        foreach ($nums as $value) {
+            try {
+                $tg = new TgBot();
+                $tg->sendNumToChannelTest($value['drbNumber']);
+            } catch (\Exception $e) {
+                Log::error('Telegram xabar yuborishda xato ' . $value['drbNumber'] . ' // ' . $e->getMessage() . ' // ' . $e->getFile() . ' // ' . $e->getLine());
+            }
+        }
+    }
+
     public static function parseNum($number)
     {
         // Bo‘sh joylar yoki kichik harflarni tozalaymiz
