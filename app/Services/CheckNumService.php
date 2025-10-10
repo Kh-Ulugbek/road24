@@ -34,8 +34,8 @@ class CheckNumService
             'x-device-name' => 'iPhone 14 Pro Max',
             // siz haqiqiy device id qo'ying yoki dinamik o'zgartiring
             'x-device-id' => 'AB85C572-CE2B-44D7-A798-AD0043E27E6C',
-            'User-Agent' => 'SafeRoad/1.6.0 (iOS/18.5; build=7; device=iPhone 14 Pro Max)',
-            'x-app-version' => '1.6.0',
+            'User-Agent' => 'SafeRoad/1.6.1 (iOS/18.5; build=7; device=iPhone 14 Pro Max)',
+            'x-app-version' => '1.6.1',
         ];
 
         $response = Http::withHeaders($headers)
