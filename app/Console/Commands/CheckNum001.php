@@ -31,7 +31,6 @@ class CheckNum001 extends Command
     {
         sleep(6);
         $result = CheckNumService::check('001');
-        dd($result);
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
             CheckNumService::sendNums($result['data']['data']);
         }
