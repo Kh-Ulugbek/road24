@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\CheckNumService;
+use App\Services\Purchase;
 use App\Services\TgBot;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
@@ -31,6 +32,7 @@ class FastCheckNum777 extends Command
     {
         $result = CheckNumService::check('777');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            Purchase::purchase($result['data']['data'][0]);
             CheckNumService::sendNums($result['data']['data']);
         }
 
@@ -38,6 +40,7 @@ class FastCheckNum777 extends Command
 
         $result = CheckNumService::check('777');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
+            Purchase::purchase($result['data']['data'][0]);
             CheckNumService::sendNums($result['data']['data']);
         }
     }
