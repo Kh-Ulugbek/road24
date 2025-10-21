@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\ErrorLog;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -50,9 +51,19 @@ class Purchase
                 }
 
             } else {
+                ErrorLog::query()->create([
+                    'response' => json_encode($response),
+//                    'request' => json_encode($data),
+                    'type' => 'Telegram xabar yuborishda xato ' . $value['drbNumber'] . ' // ' . $response->getStatusCode(),
+                ]);
                 Log::error('Telegram xabar yuborishda xato ' . $value['drbNumber'] . ' // ' . $response->getStatusCode());
             }
         } catch (\Exception $exception) {
+            ErrorLog::query()->create([
+                'response' => json_encode($headers),
+//                'request' => json_encode($data),
+                'type' => 'Telegram xabar yuborishda xato ' . $value['drbNumber'] . ' // ' . $response->getStatusCode(),
+            ]);
             Log::error('Telegram xabar yuborishda xato ' . $value['drbNumber'] . ' // ' . $exception->getMessage() . ' // ' . $exception->getFile() . ' // ' . $exception->getLine());
         }
 
