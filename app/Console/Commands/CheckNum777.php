@@ -32,16 +32,16 @@ class CheckNum777 extends Command
     {
         $result = CheckNumService::check('777');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
-            Purchase::purchase($result['data']['data'][0]);
             CheckNumService::sendNums($result['data']['data']);
+            Purchase::purchase($result['data']['data'][0]);
         }
 
         sleep(15);
 
         $result = CheckNumService::check('777');
         if ($result['ok'] and $result['data']['message'] == 'Data found') {
-            Purchase::purchase($result['data']['data'][0]);
             CheckNumService::sendNums($result['data']['data']);
+            Purchase::purchase($result['data']['data'][0]);
         }
     }
 }
